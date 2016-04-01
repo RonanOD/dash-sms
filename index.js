@@ -14,6 +14,13 @@ var client = require('twilio')(accountSid, authToken);
 dash.on("detected", function (){
 
   console.log("Dash button detected!");
+  // Best I could find Martin
+  var waitMillis = 1000;
+  var date = new Date();
+  var curDate = null;
+  do { curDate = new Date(); }
+  while(curDate-date < waitMillis);
+  
   client.messages.create({
         to: config.message.to,
         from: config.message.from,
